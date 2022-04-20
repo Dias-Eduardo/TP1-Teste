@@ -23,7 +23,7 @@ main(void) {
 
   // Write key
   unsigned int key[] = {
-    0xDEADBEEFL, 0x01234567L, 0x89ABCDEFL, 0xDEADBEEFL
+    0xDEADBEEFL, 0x01234567L, 0x89ABCDEFL
   };
 
   // Write type

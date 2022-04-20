@@ -13,6 +13,7 @@ all: $(SRC_FILES) $(TEST_FILES)
 	$(CC) $(CFLAGS) $^
 	$(CC) *.o -o app
 	rm -rf *.o
+	./app
 
 #all: app
 
