@@ -72,12 +72,16 @@ main(void) {
   
   if ((cipher[0] != 0xA5A5A5A5) || (cipher[1] != 0x01234567) ||
 	  (cipher[2] != 0xFEDCBA98) || (cipher[3] != 0x5A5A5A5A)) {
-    printf("CRYPT: ERROR!!!\n"); 	  	
+    printf("CRYPT: ERROR!!!\n");
+    printf("\n-- Crypt. Algorithms (END) --\n"); 
+    return 1; 	  	
   }
   else {
   	printf("CRYPT: OK\n");
+  	printf("\n-- Crypt. Algorithms (END) --\n"); 
+  	return 0;
   }
 
-  printf("\n-- Crypt. Algorithms (END) --\n"); 
   return 0;
+  
 }
