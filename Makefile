@@ -69,6 +69,7 @@ CPPCHECK_SRC_FILES=\
   
 INC_DIRS=-Isrc -Isrc -I/extras/fixture/src
 
+#Compila e roda normalmente
 all: clean compile run
 
 gcov: clean 
@@ -89,10 +90,7 @@ run:
 
 clean:
 	$(CLEANUP) $(TARGET1)
-	rm -f *.o
-	rm -f *.gcno
-	rm -f *.gcda
-	rm -f *.c.gcov
+	rm -f *.o *.c.gcov *.gcda *.gcno
 	
 ci: CFLAGS += -Werror
 ci: compile
