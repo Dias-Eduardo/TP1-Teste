@@ -16,7 +16,7 @@
     		temp[i] = input[i]; //Copia os valores da mensagem no temp
   	 	
   	int ret = crypt(key, input, type, enc_dec, cipher);
-  	TEST_ASSERT_TRUE(ret); // Deve retornar zero
+  	TEST_ASSERT_FALSE(ret); // Deve retornar zero
   	
   	 for (int i=0; i<4; i++)
     		input[i] = cipher[i];
