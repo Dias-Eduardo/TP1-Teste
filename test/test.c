@@ -16,7 +16,7 @@
     		temp[i] = input[i]; //Copia os valores da mensagem no temp
   	 	
   	int ret = crypt(key, input, type, enc_dec, cipher);
-  	TEST_ASSERT_FALSE(ret); // Deve retornar zero
+  	TEST_ASSERT_TRUE(ret); // Deve retornar zero
   	
   	 for (int i=0; i<4; i++)
     		input[i] = cipher[i];
@@ -51,7 +51,8 @@ TEST_TEAR_DOWN(Crypt)
 TEST(Crypt, TestCrypt1)
 {
 	unsigned int plan[4] = {0xA5A5A5A5L, 0x01234567L, 0xFEDCBA98L, 0x5A5A5A5AL};
-	unsigned int key[4] = {
+	unsigned int key[8] = {
+	    0xDEADBEEFL, 0x01234567L, 0x89ABCDEFL, 0xDEADBEEFL,
 	    0xDEADBEEFL, 0x01234567L, 0x89ABCDEFL, 0xDEADBEEFL
 	};
 	
