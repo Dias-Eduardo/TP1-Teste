@@ -76,8 +76,8 @@ gcov: clean
 	- ./$(TARGET1) -v #run normal
 
 cppcheck: clean
-	cppcheck $(CPPCHECK_SRC_FILES) 
-
+	  cppcheck cppcheck --enable=all --suppress=missingIncludeSystem $(CPPCHECK_SRC_FILES) $(CPPCHECK_SRC_FILES)
+	  
 valgrind: clean compile
 	valgrind --leak-check=full --show-leak-kinds=all ./$(TARGET1)
 
