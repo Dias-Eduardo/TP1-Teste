@@ -41,7 +41,7 @@ CFLAGS += -Wundef
 CFLAGS += -Wold-style-definition
 
 #CFLAGS adicionadas 
-#CFLAGS += -fsanitize=address
+CFLAGS += -fsanitize=address
 CFLAGS += -Wfatal-errors
 
 #Flags para o funcionamento do gcov
