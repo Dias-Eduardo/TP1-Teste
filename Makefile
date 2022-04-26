@@ -67,18 +67,27 @@ CPPCHECK_SRC_FILES=\
   src/seed.c \
   src/crypt.c 
   
+ GCOV_FILES=\
+  aes.gcno\
+  camellia.gcno \
+  seed.gcno \
+  crypt.gcno 
+  
 INC_DIRS=-Isrc -Isrc -I/extras/fixture/src
 
 #Compila e roda normalmente
-all: clean compile run
+all:	clean compile run 
 
-gcov: clean 
+gcov: clean
 	$(C_COMPILER) $(CFLAGS) $(GCOV_FLAGS) $(INC_DIRS) $(SRC_FILES1) -o $(TARGET1) #Compila com as flags do GCOV
 	- ./$(TARGET1) -v #run normal
+	#--------RELATÓRIO DO GCOV------------------
+	gcov -b $(GCOV_FILES)
+
 
 cppcheck: clean
-	  cppcheck cppcheck --enable=all --suppress=missingIncludeSystem $(CPPCHECK_SRC_FILES) $(CPPCHECK_SRC_FILES)
-	  
+	  cppcheck cppcheck --enable=all --suppress=missingIncludeSystem $(CPPCHECK_SRC_FILES) $(CPPCHECK_SRC_FILES) 
+
 valgrind: clean compile
 	valgrind --leak-check=full --show-leak-kinds=all ./$(TARGET1)
 
@@ -86,7 +95,7 @@ compile:
 	$(C_COMPILER) $(CFLAGS) $(INC_DIRS) $(SRC_FILES1) -o $(TARGET1)
 
 run:
-	./$(TARGET1) -v
+	- ./$(TARGET1) -v
 
 clean:
 	$(CLEANUP) $(TARGET1)
