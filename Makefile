@@ -41,7 +41,6 @@ CFLAGS += -Wundef
 CFLAGS += -Wold-style-definition
 
 #CFLAGS adicionadas 
-CFLAGS += -fsanitize=address
 CFLAGS += -Wfatal-errors
 
 #Flags para o funcionamento do gcov
@@ -79,20 +78,20 @@ INC_DIRS=-Isrc -Isrc -I/extras/fixture/src
 all:	clean compile run 
 
 gcov: clean
-	$(C_COMPILER) $(CFLAGS) $(GCOV_FLAGS) $(INC_DIRS) $(SRC_FILES1) -o $(TARGET1) #Compila com as flags do GCOV
+	$(C_COMPILER) $(CFLAGS) $(GCOV_FLAGS) $(INC_DIRS) $(SRC_FILES1) -fsanitize=address -o $(TARGET1) #Compila com as flags do GCOV
 	- ./$(TARGET1) -v #run normal
 	#--------RELATÓRIO DO GCOV------------------
 	gcov -b $(GCOV_FILES)
 
-
 cppcheck: clean
-	  cppcheck cppcheck --enable=all --suppress=missingIncludeSystem $(CPPCHECK_SRC_FILES) $(CPPCHECK_SRC_FILES) 
+	cppcheck cppcheck --enable=all --suppress=missingIncludeSystem $(CPPCHECK_SRC_FILES) $(CPPCHECK_SRC_FILES) 
 
-valgrind: clean compile
+valgrind: clean 
+	$(C_COMPILER) $(CFLAGS) $(INC_DIRS) $(SRC_FILES1) -o $(TARGET1)
 	valgrind --leak-check=full --show-leak-kinds=all ./$(TARGET1)
 
 compile:
-	$(C_COMPILER) $(CFLAGS) $(INC_DIRS) $(SRC_FILES1) -o $(TARGET1)
+	$(C_COMPILER) $(CFLAGS) $(INC_DIRS) $(SRC_FILES1) -fsanitize=address -o $(TARGET1)
 
 run:
 	- ./$(TARGET1) -v

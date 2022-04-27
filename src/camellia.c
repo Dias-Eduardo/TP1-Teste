@@ -130,11 +130,11 @@ void camellia_init(CamelliaContext* context, const uint64_t* key, uint16_t keyLe
 			KR[1] = ~key[2];
 		}
 	}
-	else
-	{
+	//else
+	//{
 		//TODO create return status
-		return;
-	}
+	//	return;
+	//}
 
 	// generate KA and KB
 	D1 = KL[0] ^ KR[0];
