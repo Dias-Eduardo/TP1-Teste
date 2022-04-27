@@ -306,7 +306,7 @@ void camellia_enc(const CamelliaContext* context, const uint64_t* block, uint64_
 	for (feistelIteration = 0; feistelIteration < context->feistelIterations; feistelIteration++)
 	{
 		// each feistel iteration is 6 rounds
-		for (round = 1; round < 6; round++)
+		for (round = 1; round <= 6; round++)
 		{
 			// calculate index
 			dIndex = round % 2;
