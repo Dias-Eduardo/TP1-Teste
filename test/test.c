@@ -30,9 +30,6 @@ void testa_crypt(uint8_t type){
   	int ret = crypt(key, input, type, enc_dec, output); //Chama a função crypt
   	TEST_ASSERT_FALSE(ret); // Deve retornar zero
   	
-	for (int i=0; i<4 && type == 6; i++)
-		printf("%08X\n", output[i]);
-  	
   	for (int i=0; i<4; i++)
     		input[i] = output[i];
   	
