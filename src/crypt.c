@@ -14,7 +14,6 @@
 // CRYPT
 //-----------------------------------------------------------------------------
 int crypt(uint32_t* key, uint32_t* input, uint8_t type, uint8_t enc_dec, uint32_t* output) {
-	input[4] = 0x12345678L;
   if (enc_dec == 0 || enc_dec == 1){
     switch (type) {
       case 0  : seed(key, input, enc_dec, output); break;
