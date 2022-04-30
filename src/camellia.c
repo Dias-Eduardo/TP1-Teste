@@ -282,7 +282,7 @@ void camellia_init(CamelliaContext* context, const uint64_t* key, uint16_t keyLe
 		ROL_128(temp, KB, 30); // 60 + 51 = 111 left circular shift
 		ROL_128(temp, temp, 30);
 		ROL_128(temp, temp, 30);
-		ROL_128(temp, temp, 20);
+		ROL_128(temp, temp, 21);
 		context->k[i++] = temp[0];
 		context->k[i++] = temp[1];
 	}
