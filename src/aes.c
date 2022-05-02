@@ -309,7 +309,7 @@ aes(uint32_t* key, const uint32_t* input, uint8_t type, uint8_t enc_dec, uint32_
     aes_dec();
 
   // Copy state to output
-  for(i = 0; i <= 4; i++) {
+  for(i = 0; i < 4; i++) {
     output[i] = (state[i][0] << 24) + (state[i][1] << 16) + (state[i][2] << 8) + state[i][3];
   }
 }
