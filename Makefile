@@ -94,7 +94,7 @@ compile:
 	$(C_COMPILER) $(CFLAGS) $(INC_DIRS) $(SRC_FILES1) -fsanitize=address -o $(TARGET1)
 
 run:
-	- ./$(TARGET1)
+	./$(TARGET1)
 
 clean:
 	$(CLEANUP) $(TARGET1)
