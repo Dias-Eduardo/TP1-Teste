@@ -138,13 +138,13 @@ TEST(Crypt, TestCrypt1)
 	printf("AES-256:\n");
 	testa_crypt(key256, AES256, checker_AES256);		//Teste adicional
 	printf("----------------------------------------\n");
-	printf("Camelia-128:\n");
+	printf("Camellia-128:\n");
 	testa_crypt(key128, CAMELLIA128, checker_CAMELLIA128);//Teste adicional
 	printf("----------------------------------------\n");
-	printf("Camelia-192:\n");
+	printf("Camellia-192:\n");
 	testa_crypt(key192, CAMELLIA192, checker_CAMELLIA192);//Teste adicional
 	printf("----------------------------------------\n");
-	printf("Camelia-256:\n");
+	printf("Camellia-256:\n");
 	testa_crypt(key256, CAMELLIA256, checker_CAMELLIA256);
 	printf("----------------------------------------\n");
 
