@@ -26,26 +26,46 @@ void testa_crypt(uint32_t* key, uint8_t type, const uint32_t* checker){
   	uint8_t enc_dec = 1;
   	uint32_t temp[4]; //Vetor temp irá armazenar a mensagem original
   	
-  	for (int i=0; i<4; i++)
-    		temp[i] = input[i]; //Copia os valores da mensagem no temp
+  	//Printa a mensagem original
+  	printf("Mensagem original:       ");
+  	for(int i = 0; i < 4; i++){
+  		printf(" %08X", input[i]);
+  	}
+  	printf("\n");
   	
-  	int ret = crypt(key, input, type, enc_dec, output); //Chama a função crypt
+  	//Copia os valores da mensagem no temp
+  	for (int i=0; i<4; i++)
+    		temp[i] = input[i]; 
+  	
+  	//Chama a função crypt para criptografar a mensagem com o type escolhido
+  	int ret = crypt(key, input, type, enc_dec, output); 
   	TEST_ASSERT_FALSE(ret); // Deve retornar zero
   	
+  	//Checa se o vetor retornado pela crypt corresponde ao checker enviado
   	TEST_ASSERT_EQUAL_UINT32_ARRAY(checker, output, 4);
+  	
+  	//Printa a mensagem criptografada
+  	printf("Mensagem criptografada:  ");
+  	for(int i = 0;i<4;i++)
+    		printf(" %08X", output[i]);
+  	printf("\n");
   	
   	for (int i=0; i<4; i++)
     		input[i] = output[i];
-    		
-    	for(int i = 0;i<4;i++)
-    		printf("%08X\n", output[i]);
-  	
+	
+	//Chama a função crypt para decriptografar a mensagem criptografada anteriormente
   	enc_dec = 0;
-	ret = crypt(key, input, type, enc_dec, output); //Chama a função crypt
+	ret = crypt(key, input, type, enc_dec, output); 
 	TEST_ASSERT_FALSE(ret); // Deve retornar zero
-	
-	
+
+	//Checa se o vetor decriptado retornado corresponde à mensagem original
 	TEST_ASSERT_EQUAL_UINT32_ARRAY(temp, output, 4);
+	
+	//Por último printa-se a mensagem decriptografada, que é igual a mensagem original (pelo menos é para ser)
+	printf("Mensagem decriptografada:");
+  	for(int i = 0;i<4;i++)
+    		printf(" %08X", output[i]);
+  	printf("\n");
 	
 	//Restaura o valor do vetor input
 	for (int i=0; i<4; i++)
@@ -132,7 +152,6 @@ TEST(Crypt, TestCrypt1)
 	TEST_ASSERT_TRUE(crypt(key128, input, 7, 0, output)); // Testando com 7 no type (valor incorreto)
 	TEST_ASSERT_TRUE(crypt(key128, input, SEED, -1, output)); // Testando com -1 no enc_dec (valor incorreto)
 	TEST_ASSERT_TRUE(crypt(key128, input, SEED, 2, output)); // Testando com 2 no enc_dec (valor incorreto)
-	
 	
 	TEST_ASSERT_TRUE(crypt(key128, input, -1, 1, output)); // Testando com -1 no type (valor incorreto)
 	TEST_ASSERT_TRUE(crypt(key128, input, 7, 1, output)); // Testando com 7 no type (valor incorreto)
