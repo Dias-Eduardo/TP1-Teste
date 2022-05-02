@@ -113,7 +113,7 @@ seed_dec(SeedContext* context, const uint32_t* block, uint32_t* out) {
 	uint32_t r0 = block[2];
 	uint32_t r1 = block[3];
 
-	for (i = 0; i <= NR_ROUNDS - 1; i++) {
+	for (i = 0; i < NR_ROUNDS - 1; i++) {
 		F(r0, r1, context->subkeys[subkey - 1], context->subkeys[subkey], &temp0, &temp1);
 
 		temp0 ^= l0;
