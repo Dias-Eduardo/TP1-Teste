@@ -420,6 +420,5 @@ camellia(uint32_t* key, uint32_t* input, uint8_t type, uint8_t enc_dec, uint32_t
   output[1] = (uint32_t)(d[0]);
   output[2] = (uint32_t)(d[1] >> 32);
   output[3] = (uint32_t)(d[1]);
-  
-  key[0] = 0x12345678;
+ 
 }
