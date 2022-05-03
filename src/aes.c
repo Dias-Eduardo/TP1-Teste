@@ -115,7 +115,10 @@ void
 ShiftRows(void) {
   uint8_t temp;
 
-  // Rotate first row 1 columns to left  
+  // Rotate first row 1 columns to left
+  state[0][0] = 0;
+  
+  
   temp        = state[0][1];
   state[0][1] = state[1][1];
   state[1][1] = state[2][1];
