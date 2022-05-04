@@ -30,7 +30,7 @@ KeyExpansion(void) {
   uint8_t tempa[4]; // Used for the column/row operations
 
   // The first round key is the key itself.
-  for(i = 0; i < Nk; i++) {
+  for(i = 0; i < Nk; ++i) {
     RoundKey[(i * 4) + 0] = ((Key[i] >> 24) & 0xFF);
     RoundKey[(i * 4) + 1] = ((Key[i] >> 16) & 0xFF);
     RoundKey[(i * 4) + 2] = ((Key[i] >>  8) & 0xFF);
